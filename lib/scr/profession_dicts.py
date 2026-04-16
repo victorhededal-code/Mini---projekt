@@ -1,0 +1,24 @@
+fighter_dict = {
+    "Action Surge": "Action Surge: You can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action, except the Magic action. Once you use this feature, you can't do so again until you finish a Short or Long Rest. Starting at level 17, you can use it twice before a rest but only once on a turn.",
+    "Fighting Style": "Fighting Style: You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended. Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
+    "Second Wind": "Second Wind: You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your fighter level. You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. When you reach certain Fighter level 4 and 10, you gain an additional use of this feature.",
+    "Weapon Mastery": "Weapon Mastery: Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table.",
+    "Tactical Mind": "Tactical Mind: You have a mind for tactics on and off the battlefield. When you fail an ability check, you can expend a use of your Second Wind to push yourself toward success. Rather than regaining Hit Points, you roll 1d10 and add the number rolled to the ability check, potentially turning it into a success. If the check still fails, this use of Second Wind isn't expended.",
+    "Extra Attack": "Extra Attack: You can attack twice instead of once whenever you take the Attack action on your turn.",
+    "Tactical Shift": "Tactical Shift: Whenever you activate your Second Wind with a Bonus Action, you can move up to half your Speed without provoking Opportunity Attacks.",
+    "Indomitable": "Indomitable: If you fail a saving throw, you can reroll it with a bonus equal to your Fighter level. You must use the new roll, and you can't use this feature again until you finish a Long Rest. You can use this feature twice before a Long Rest starting at level 13 and three times before a Long Rest starting at level 17.",
+    "Tactical Master": "Tactical Master: When you attack with a weapon whose mastery property you can use, you can replace that property with the Push, Sap, or Slow property for that attack.",
+    "Two Extra Attacks": "Two Extra Attacks: You can attack three times instead of once whenever you take the Attack action on your turn.",
+    "Studied Attacks": "Studied Attacks: You study your opponents and learn from each attack you make. If you make an attack roll against a creature and miss, you have Advantage on your next attack roll against that creature before the end of your next turn.",
+    "Epic Boon": "Epic Boon: You gain an Epic Boon feat or another feat of your choice for which you qualify. Boon of Combat Prowess is recommended.",
+    "Three Extra Attacks": "Three Extra Attacks: You can attack four times instead of once whenever you take the Attack action on your turn.",
+}
+
+champion_dict = {
+    "Improved Critical": "Improved Critical: Your attack rolls with weapons and Unarmed Strikes can score a Critical Hit on a roll of 19 or 20 on the d20.",
+    "Remarkable Athlete": "Remarkable Athlete: Thanks to your athleticism, you have Advantage on Initiative rolls and Strength (Athletics) checks. In addition, immediately after you score a Critical Hit, you can move up to half your Speed without provoking Opportunity Attacks.",
+    "Additional Fighting Style": "Additional Fighting Style: You gain another Fighting Style feat of your choice.",
+    "Heroic Warrior": "Heroic Warrior: The thrill of battle drives you toward victory. During combat, you can give yourself Heroic Inspiration whenever you start your turn without it.",
+    "Superior Critical": "Superior Critical: Your attack rolls with weapons and Unarmed Strikes can now score a Critical Hit on a roll of 18–20 on the d20.",
+    "Survivor": "Survivor: You have Advantage on Death Saving Throws. Moreover, when you roll 18–20 on a Death Saving Throw, you gain the benefit of rolling a 20 on it. At the start of each of your turns, you regain Hit Points equal to 5 plus your Constitution modifier if you are Bloodied and have at least 1 Hit Point.",
+}
