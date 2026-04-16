@@ -1,4 +1,4 @@
-from race_dicts import aasimar_dict, dragonborn_dict, dwarf_dict, elf_dict, gnome_dict, goliath_dict, halfling_dict, human_dict, orc_dict, tiefling_dict,
+from race_dicts import aasimar_dict, dragonborn_dict, dwarf_dict, elf_dict, gnome_dict, goliath_dict, halfling_dict, human_dict, orc_dict, tiefling_dict
 
 class Race:
     def __init__(self, name, data):
