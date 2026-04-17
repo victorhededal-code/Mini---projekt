@@ -1,0 +1,7 @@
+champion_dict = {
+    3: {"Improved Critical": "Improved Critical: Your attack rolls with weapons and Unarmed Strikes can score a Critical Hit on a roll of 19 or 20 on the d20.", "Remarkable Athlete": "Remarkable Athlete: Thanks to your athleticism, you have Advantage on Initiative rolls and Strength (Athletics) checks. In addition, immediately after you score a Critical Hit, you can move up to half your Speed without provoking Opportunity Attacks."},
+    7: {"Additional Fighting Style": "Additional Fighting Style: You gain another Fighting Style feat of your choice."},
+    10: {"Heroic Warrior": "Heroic Warrior: The thrill of battle drives you toward victory. During combat, you can give yourself Heroic Inspiration whenever you start your turn without it."},
+    15: {"Superior Critical": "Superior Critical: Your attack rolls with weapons and Unarmed Strikes can now score a Critical Hit on a roll of 18–20 on the d20."},
+    18: {"Survivor": "Survivor: You have Advantage on Death Saving Throws. Moreover, when you roll 18–20 on a Death Saving Throw, you gain the benefit of rolling a 20 on it. At the start of each of your turns, you regain Hit Points equal to 5 plus your Constitution modifier if you are Bloodied and have at least 1 Hit Point."},
+}

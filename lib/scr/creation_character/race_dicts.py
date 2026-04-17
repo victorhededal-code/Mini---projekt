@@ -199,3 +199,6 @@ Infernal:
 
     "Otherworldly Presence": "You know Thaumaturgy. When you cast it, it uses your Fiendish Legacy spellcasting ability."
 }
+
+"""for i in human_dict:
+    print(i, ':', human_dict[i])"""
