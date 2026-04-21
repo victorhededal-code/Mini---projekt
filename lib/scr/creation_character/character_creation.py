@@ -3,12 +3,14 @@ from profession import *
 from profession_dicts import *
 from lib.scr.creation_character.StatRoller import *
 from race_dicts import *
+from asiapplier import *
 def character_create(character_list:list) -> list:
     "goes through a character creation process"
     while True:
         character = {}
         name = input('Choose your character name')
         character['name'] = name
+        character_stats = stats()
         print('choose class:\n Fighter \n Champion')
         proff = input ()
         lvl=int(input('choose level'))
@@ -74,6 +76,8 @@ def character_create(character_list:list) -> list:
         char = Background(name,back)
         Background.__background_move__(char)
         character['background'] = back
+        character_stats = apply_asi(character_stats, soldier["ASI"])
+        print(character_stats)
         align = input('Choose your characters alignment here')
         character['alignment'] = align
         check = input('finished?')
