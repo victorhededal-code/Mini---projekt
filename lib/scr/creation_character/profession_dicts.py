@@ -89,6 +89,6 @@ dictskabalon_dict = {
     19: {},
     20: {},
 }
-#for y in fighter_dict:
-   # for i in fighter_dict[y]:
-    #    print(i,':',fighter_dict[y][i])
+"""for y in fighter_dict:
+    for i in fighter_dict[y]:
+        print(i,':',fighter_dict[y][i])"""

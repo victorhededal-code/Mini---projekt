@@ -1,6 +1,7 @@
+from lib.scr.creation_character.background import Background
 from profession import *
 from profession_dicts import *
-from StatRoller import *
+from lib.scr.creation_character.StatRoller import *
 from race_dicts import *
 def character_create(character_list:list) -> list:
     "goes through a character creation process"
@@ -70,6 +71,8 @@ def character_create(character_list:list) -> list:
                 print(i,':',human_dict[i])
         character['race']= race
         back= input('input your characters background here')
+        char = Background(name,back)
+        Background.__background_move__(char)
         character['background'] = back
         align = input('Choose your characters alignment here')
         character['alignment'] = align
