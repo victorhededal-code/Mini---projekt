@@ -1,4 +1,4 @@
-from profession_dicts import fighter_dict
+from profession_dicts import proffesion
 
 
 class MartialProfession:

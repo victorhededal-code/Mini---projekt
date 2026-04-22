@@ -1,6 +1,5 @@
 from lib.scr.creation_character.background import Background
-from profession import *
-from profession_dicts import *
+from lib.scr.creation_character.prof.profession_dicts import *
 from lib.scr.creation_character.StatRoller import *
 from race_dicts import *
 from asiapplier import *
@@ -9,81 +8,37 @@ def character_create(character_list:list) -> list:
     while True:
         character = {}
         name = input('Choose your character name')
-        character['name'] = name
+        character['Name:'] = name
         character_stats = stats()
         print('choose class:\n Fighter \n Champion')
         proff = input ()
+        character['Class:'] = proff
+        proff = proff.lower()
         lvl=int(input('choose level'))
-        character['lvl:']=lvl
-        #character['stats:']= stats()
-        if proff == 'Fighter':
-            if lvl == 20:
-                for i in fighter_dict:
-                    for y in fighter_dict[i]:
-                        print(y,':',fighter_dict[i][y])
-            else:
-                if lvl >= 1:
-                    for i in fighter_dict[1]:
-                        print(i, ':', fighter_dict[1][i])
-                if lvl >= 2:
-                    for i in fighter_dict[2]:
-                        print(i, ':', fighter_dict[2][i])
-                if lvl >= 5:
-                    for i in fighter_dict[5]:
-                        print(i, ':', fighter_dict[5][i])
-                if lvl >= 11:
-                    for i in fighter_dict[11]:
-                        print(i, ':', fighter_dict[11][i])
-                if lvl >= 13:
-                    for i in fighter_dict[13]:
-                        print(i, ':', fighter_dict[13][i])
-                if lvl >= 19:
-                    for i in fighter_dict[19]:
-                        print(i, ':', fighter_dict[19][i])
-        elif proff == 'Champion':
-            if lvl == 20:
-                for i in paladin_dict:
-                    for y in paladin_dict[i]:
-                        print(y,':',paladin_dict[i][y])
-            else:
-                if lvl >= 1:
-                    for i in paladin_dict[1]:
-                        print(i, ':', paladin_dict[1][i])
-                if lvl >= 2:
-                    for i in paladin_dict[2]:
-                        print(i, ':', paladin_dict[2][i])
-                if lvl >= 5:
-                    for i in paladin_dict[5]:
-                        print(i, ':', paladin_dict[5][i])
-                if lvl >= 11:
-                    for i in paladin_dict[11]:
-                        print(i, ':', paladin_dict[11][i])
-                if lvl >= 13:
-                    for i in paladin_dict[13]:
-                        print(i, ':', paladin_dict[13][i])
-                if lvl >= 19:
-                    for i in paladin_dict[19]:
-                        print(i, ':', paladin_dict[19][i])
-        else:
-            print('Invalid input')
-        character['class']= proff
-        race=input('choose Race / Species: \nHuman\n elf\n gnome\n a fucking dragon')
-        if race== 'Human':
-            for i in human_dict:
-                print(i,':',human_dict[i])
-        character['race']= race
-        back= input('input your characters background here')
-        char = Background(name,back)
-        Background.__background_move__(char)
-        character['background'] = back
-        character_stats = apply_asi(character_stats, soldier["ASI"])
-        print(character_stats)
-        align = input('Choose your characters alignment here')
-        character['alignment'] = align
-        check = input('finished?')
-        if check == 'yes' or check == 'y' or check == 'Yes' or check == 'YES' or check == 'Y':
-            pass
-            return character_list
+        character['LVL:']=lvl
 
+        for x in range(1, lvl + 1):
+            for i in proffesion[proff][x]:
+                print(i, ':', proffesion[proff][x][i])
+        race=input('choose Race / Species: \nHuman\n elf\n gnome\n a fucking dragon')
+        if race in racedict:
+            print(f"{racedict[race]}")
+        character['Race:']= race
+        back= input('input your characters background here')
+        if back in backgrounds:
+            char = Background(name,back)
+            Background.__background_move__(char)
+            character['Background:'] = back
+            character_stats = apply_asi(character_stats, back["ASI"])
+            print(character_stats)
+        align = input('Choose your characters alignment here')
+        character['Alignment:'] = align
+        character['Stats:\n'] = character_stats
+        check = input('finished?')
+        for i in character:
+            print(i, character[i])
+        character_list.append(character)
+        if check == 'yes' or check == 'y' or check == 'Yes' or check == 'YES' or check == 'Y' or check == '':
+            return character_list
 character_list = []
 character_list =character_create(character_list)

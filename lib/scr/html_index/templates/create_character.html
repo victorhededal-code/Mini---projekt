@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>D&D Character Creator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #a855f7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+            background: #020617;
+            color: white;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .stat-box {
+            background: #020617;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .modifier {
+            font-size: 0.9rem;
+            color: #cbd5f5;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 15px;
+            width: 100%;
+            background: #a855f7;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #9333ea;
+        }
+
+        .output {
+            margin-top: 30px;
+            padding: 20px;
+            background: #020617;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Character Creator</h1>
+
+<div class="container">
+
+    <label>Name</label>
+    <input type="text" id="name">
+
+    <label>Class</label>
+    <select id="class">
+        <option>Fighter</option>
+        <option>Wizard</option>
+        <option>Rogue</option>
+        <option>Cleric</option>
+        <option>Ranger</option>
+        <option>Paladin</option>
+    </select>
+
+    <label>Level</label>
+    <input type="number" id="level" min="1" max="20" value="1">
+
+    <label>Race</label>
+    <select id="race">
+        <option>Human</option>
+        <option>Elf</option>
+        <option>Dwarf</option>
+        <option>Halfling</option>
+        <option>Tiefling</option>
+        <option>Dragonborn</option>
+    </select>
+
+    <label>Background</label>
+    <input type="text" id="background">
+
+    <h2>Stats</h2>
+    <div class="stats">
+        <div class="stat-box">
+            STR <input type="number" id="str" value="10" oninput="updateMods()">
+            <div class="modifier" id="mod-str"></div>
+        </div>
+        <div class="stat-box">
+            DEX <input type="number" id="dex" value="10" oninput="updateMods()">
+            <div class="modifier" id="mod-dex"></div>
+        </div>
+        <div class="stat-box">
+            CON <input type="number" id="con" value="10" oninput="updateMods()">
+            <div class="modifier" id="mod-con"></div>
+        </div>
+        <div class="stat-box">
+            INT <input type="number" id="int" value="10" oninput="updateMods()">
+            <div class="modifier" id="mod-int"></div>
+        </div>
+        <div class="stat-box">
+            WIS <input type="number" id="wis" value="10" oninput="updateMods()">
+            <div class="modifier" id="mod-wis"></div>
+        </div>
+        <div class="stat-box">
+            CHA <input type="number" id="cha" value="10" oninput="updateMods()">
+            <div class="modifier" id="mod-cha"></div>
+        </div>
+    </div>
+
+    <button onclick="generateCharacter()">Create Character</button>
+
+    <div class="output" id="output"></div>
+
+</div>
+
+<script>
+    function getModifier(score) {
+        return Math.floor((score - 10) / 2);
+    }
+
+    function formatMod(mod) {
+        return mod >= 0 ? "+" + mod : mod;
+    }
+
+    function updateMods() {
+        const stats = ["str","dex","con","int","wis","cha"];
+        stats.forEach(stat => {
+            let val = parseInt(document.getElementById(stat).value) || 0;
+            let mod = getModifier(val);
+            document.getElementById("mod-" + stat).innerText = "Modifier: " + formatMod(mod);
+        });
+    }
+
+    // Initialize modifiers on load
+    updateMods();
+
+    function generateCharacter() {
+        const char = {
+            name: document.getElementById("name").value,
+            class: document.getElementById("class").value,
+            level: document.getElementById("level").value,
+            race: document.getElementById("race").value,
+            background: document.getElementById("background").value,
+            stats: {
+                STR: document.getElementById("str").value,
+                DEX: document.getElementById("dex").value,
+                CON: document.getElementById("con").value,
+                INT: document.getElementById("int").value,
+                WIS: document.getElementById("wis").value,
+                CHA: document.getElementById("cha").value
+            }
+        };
+
+        let outputHTML = `
+    <h2>${char.name}</h2>
+    <p><strong>Class:</strong> ${char.class} (Level ${char.level})</p>
+    <p><strong>Race:</strong> ${char.race}</p>
+    <p><strong>Background:</strong> ${char.background}</p>
+    <h3>Stats</h3>
+    <ul>
+      ${Object.entries(char.stats).map(([key, val]) => {
+            let mod = formatMod(getModifier(val));
+            return `<li>${key}: ${val} (${mod})</li>`;
+        }).join("")}
+    </ul>
+  `;
+
+        document.getElementById("output").innerHTML = outputHTML;
+    }
+</script>
+
+</body>
+</html>

@@ -8,8 +8,8 @@ def stats():
 
     # Roll stats
     for i in range(1, 7):
-        input("Roll with Enter ")
         rolls = [random.randint(1, 6) for _ in range(4)]
+        time.sleep(1)
         print(f"Rolls: {rolls}")
         rolls.remove(min(rolls))
         stat = sum(rolls)

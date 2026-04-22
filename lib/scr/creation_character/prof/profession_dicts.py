@@ -1,4 +1,5 @@
-fighter_dict = {
+proffesion ={
+'fighter' : {
     1 : {"Fighting Style": "You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended. Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
     "Second Wind": "You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your fighter level. You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. When you reach certain Fighter level 4 and 10, you gain an additional use of this feature.",
     "Weapon Mastery": "Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table."},
@@ -43,8 +44,8 @@ fighter_dict = {
     19: {"Epic Boon": "Epic Boon: You gain an Epic Boon feat or another feat of your choice for which you qualify. Boon of Combat Prowess is recommended."},
 
     20: {"Three Extra Attacks": "Three Extra Attacks: You can attack four times instead of once whenever you take the Attack action on your turn."},
-}
-paladin_dict = {
+},
+'paladin' : {
     1:{},
     2:{},
     3:{},
@@ -66,8 +67,8 @@ paladin_dict = {
     19:{},
     20:{},
 
-}
-dictskabalon_dict = {
+},
+'Skabalon' : {
     1: {},
     2: {},
     3: {},
@@ -89,6 +90,9 @@ dictskabalon_dict = {
     19: {},
     20: {},
 }
-"""for y in fighter_dict:
-    for i in fighter_dict[y]:
-        print(i,':',fighter_dict[y][i])"""
+}
+"""choice = input("Enter your proffesion: ")
+yes=int(input("test number"))
+for x in range(1,yes+1):
+    for i in proffesion_dict[choice][x]:
+        print(i,':',proffesion_dict[choice][x][i])"""
