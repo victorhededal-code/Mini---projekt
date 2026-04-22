@@ -85,71 +85,72 @@
 
 <h1>Character Creator</h1>
 
-<div class="container">
+<form method="POST" action="/create">
+    <div class="container">
 
-    <label>Name</label>
-    <input type="text" id="name">
+        <label>Name</label>
+        <input type="text" name="name" id="name">
 
-    <label>Class</label>
-    <select id="class">
-        <option>Fighter</option>
-        <option>Wizard</option>
-        <option>Rogue</option>
-        <option>Cleric</option>
-        <option>Ranger</option>
-        <option>Paladin</option>
-    </select>
+        <label>Class</label>
+        <select name="class" id="class">
+            <option>Fighter</option>
+            <option>Wizard</option>
+            <option>Rogue</option>
+            <option>Cleric</option>
+            <option>Ranger</option>
+            <option>Paladin</option>
+        </select>
 
-    <label>Level</label>
-    <input type="number" id="level" min="1" max="20" value="1">
+        <label>Level</label>
+        <input type="number" name="level" id="level" min="1" max="20" value="1">
 
-    <label>Race</label>
-    <select id="race">
-        <option>Human</option>
-        <option>Elf</option>
-        <option>Dwarf</option>
-        <option>Halfling</option>
-        <option>Tiefling</option>
-        <option>Dragonborn</option>
-    </select>
+        <label>Race</label>
+        <select name="race">
+            <option>Human</option>
+            <option>Elf</option>
+            <option>Dwarf</option>
+            <option>Halfling</option>
+            <option>Tiefling</option>
+            <option>Dragonborn</option>
+        </select>
 
-    <label>Background</label>
-    <input type="text" id="background">
+        <label>Background</label>
+        <input type="text" name="background" id="background">
 
-    <h2>Stats</h2>
-    <div class="stats">
-        <div class="stat-box">
-            STR <input type="number" id="str" value="10" oninput="updateMods()">
-            <div class="modifier" id="mod-str"></div>
+        <h2>Stats</h2>
+        <div class="stats">
+            <div class="stat-box">
+                STR <input type="number" name="str" id="str" value="10" oninput="updateMods()">
+                <div class="modifier" id="mod-str"></div>
+            </div>
+            <div class="stat-box">
+                DEX <input type="number" name="dex" id="dex" value="10" oninput="updateMods()">
+                <div class="modifier" id="mod-dex"></div>
+            </div>
+            <div class="stat-box">
+                CON <input type="number" name="con" id="con" value="10" oninput="updateMods()">
+                <div class="modifier" id="mod-con"></div>
+            </div>
+            <div class="stat-box">
+                INT <input type="number" name="int" id="int" value="10" oninput="updateMods()">
+                <div class="modifier" id="mod-int"></div>
+            </div>
+            <div class="stat-box">
+                WIS <input type="number" name="wis" id="wis" value="10" oninput="updateMods()">
+                <div class="modifier" id="mod-wis"></div>
+            </div>
+            <div class="stat-box">
+                CHA <input type="number" name="cha" id="cha" value="10" oninput="updateMods()">
+                <div class="modifier" id="mod-cha"></div>
+            </div>
         </div>
-        <div class="stat-box">
-            DEX <input type="number" id="dex" value="10" oninput="updateMods()">
-            <div class="modifier" id="mod-dex"></div>
-        </div>
-        <div class="stat-box">
-            CON <input type="number" id="con" value="10" oninput="updateMods()">
-            <div class="modifier" id="mod-con"></div>
-        </div>
-        <div class="stat-box">
-            INT <input type="number" id="int" value="10" oninput="updateMods()">
-            <div class="modifier" id="mod-int"></div>
-        </div>
-        <div class="stat-box">
-            WIS <input type="number" id="wis" value="10" oninput="updateMods()">
-            <div class="modifier" id="mod-wis"></div>
-        </div>
-        <div class="stat-box">
-            CHA <input type="number" id="cha" value="10" oninput="updateMods()">
-            <div class="modifier" id="mod-cha"></div>
-        </div>
+
+        <button type="submit">Create Character</button>
+
+        <div class="output" id="output"></div>
+
     </div>
-
-    <button onclick="generateCharacter()">Create Character</button>
-
-    <div class="output" id="output"></div>
-
-</div>
-
+</form>
 <script>
     function getModifier(score) {
         return Math.floor((score - 10) / 2);
@@ -179,12 +180,12 @@
             race: document.getElementById("race").value,
             background: document.getElementById("background").value,
             stats: {
-                STR: document.getElementById("str").value,
-                DEX: document.getElementById("dex").value,
-                CON: document.getElementById("con").value,
-                INT: document.getElementById("int").value,
-                WIS: document.getElementById("wis").value,
-                CHA: document.getElementById("cha").value
+                STR: document.getElementByName("str").value,
+                DEX: document.getElementByName("dex").value,
+                CON: document.getElementByName("con").value,
+                INT: document.getElementByName("int").value,
+                WIS: document.getElementByName("wis").value,
+                CHA: document.getElementByName("cha").value
             }
         };
 

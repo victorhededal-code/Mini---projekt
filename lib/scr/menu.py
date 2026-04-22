@@ -1,4 +1,4 @@
-from creation_character.character_creation import *
+from lib.scr.character_creation import *
 def menu():
     print("Welcome to the DnD character creator")
     character_list=log_in()
