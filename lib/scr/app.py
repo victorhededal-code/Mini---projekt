@@ -3,6 +3,7 @@ from character_creation import create_character
 import json
 import os
 
+
 app = Flask(__name__)
 
 
@@ -75,5 +76,10 @@ def characters():
         characters = []
 
     return render_template("characters.html", characters=characters)
+
+@app.route("/save")
+def save():
+    gem noget lort.
+
 
 app.run(debug=True)
