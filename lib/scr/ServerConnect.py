@@ -39,3 +39,4 @@ def load_characters(json_path):
     conn.close()
 
     print("Character imported successfully")
+load_characters("characters.json")
