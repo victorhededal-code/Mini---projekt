@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ character.Name }}</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #a855f7;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #c084fc;
+            margin-top: 25px;
+        }
+
+        .section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #020617;
+            border-radius: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .stat {
+            background: #020617;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .back-btn {
+            display: block;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back-btn a {
+            text-decoration: none;
+            background: #a855f7;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .back-btn a:hover {
+            background: #9333ea;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Character Name -->
+    <h1>{{ character.Name }}</h1>
+
+    <!-- Basic Info -->
+    <div class="section">
+        <p><strong>Class:</strong> {{ character.Class|capitalize }}</p>
+        <p><strong>Level:</strong> {{ character.Level }}</p>
+        <p><strong>Race:</strong> {{ character.Race|capitalize }}</p>
+        <p><strong>Background:</strong> {{ character.Background }}</p>
+    </div>
+
+    <!-- Stats -->
+    <h2>Stats</h2>
+    <div class="section grid">
+        {% for stat, value in character.Stats.items() %}
+            <div class="stat">
+                <strong>{{ stat }}</strong><br>
+                {{ value }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Class Features -->
+    <h2>Class Features</h2>
+    <div class="section">
+        {% if character["Class Features"] %}
+            <ul>
+                {% for feature in character["Class Features"] %}
+                    <li>{{ feature }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No features available.</p>
+        {% endif %}
+    </div>
+
+    <!-- Race Description -->
+    <h2>Race Info</h2>
+    <div class="section">
+        <p>{{ character["Race Description"] }}</p>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-btn">
+        <a href="/create">Create Another Character</a>
+    </div>
+
+    <div class="back-btn">
+        <a href="/characters">Show Saved Characters</a>
+    </div>
+
+</div>
+
+</body>
+</html>
