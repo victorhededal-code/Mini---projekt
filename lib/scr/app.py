@@ -17,6 +17,7 @@ def create():
         # Collect form data
         form = request.form
 
+        # Data trukket fra create_character.html
         data = {
             "name": form.get("name"),
             "class": form.get("class"),
