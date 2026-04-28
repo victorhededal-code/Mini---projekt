@@ -1,21 +1,41 @@
+import json
 import psycopg2
-
-SQL = "INSERT INTO public.class_info (class_id, class_name, class_resource) VALUES (%s,%s,%s);"
+import os
 
 def get_conn():
     return psycopg2.connect(
         dbname="defaultdb",
-        user="", #Brug individuelt brugernavn
-        password="", #Brug individuelt password, skrevet i Discord
+        user="avnadmin",
+        password=os.getenv("AVNS_OS7k6IhujLNj9O7-AeD"),
         host="pg-4a73aa4-itek-thostrup.i.aivencloud.com",
         port=18539,
     )
-class_id = 1 #skal ændres til at opdatere/tælle op automatisk
-class_name = "" #Måske ændres til at trække fra vores Dictionary?
-class_resource = "" #Måske ændres til at trække fra vores Dictionary?
-conn = get_conn()
-curr = conn.cursor()
-curr.execute(SQL, (class_id, class_name, class_resource))
-conn.commit()
-curr.close()
-conn.close()
+
+def load_characters(json_path):
+    with open(json_path, "r") as f:
+        data = json.load(f)
+
+    conn = get_conn()
+    cur = conn.cursor()
+
+    # NOTE: your JSON is a single object, not a list
+    if isinstance(data, dict):
+        data = [data]
+
+    for character in data:
+        name = character.get("Name")
+        features = character.get("Class Features", [])
+
+        # convert list → string (safe for TEXT column)
+        features_text = "\n".join(features)
+
+        cur.execute("""
+            INSERT INTO public.class_info (class_name, class_resource)
+            VALUES (%s, %s)
+        """, (name, features_text))
+
+    conn.commit()
+    cur.close()
+    conn.close()
+
+    print("Character imported successfully")

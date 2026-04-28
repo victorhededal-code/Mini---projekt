@@ -75,6 +75,15 @@
         }
     </style>
 </head>
+  <header>
+    <h1>ForgeYourHero</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Builder</a>
+      <a href="#">Login</a>
+    </nav>
+  </header>
 <body>
 
 <div class="container">
@@ -94,10 +103,10 @@
     <h2>Stats</h2>
     <div class="section grid">
         {% for stat, value in character.Stats.items() %}
-            <div class="stat">
-                <strong>{{ stat }}</strong><br>
-                {{ value }}
-            </div>
+        <div class="stat">
+            <strong>{{ stat }}</strong><br>
+            {{ value }}
+        </div>
         {% endfor %}
     </div>
 
@@ -105,13 +114,13 @@
     <h2>Class Features</h2>
     <div class="section">
         {% if character["Class Features"] %}
-            <ul>
-                {% for feature in character["Class Features"] %}
-                    <li>{{ feature }}</li>
-                {% endfor %}
-            </ul>
+        <ul>
+            {% for feature in character["Class Features"] %}
+            <li>{{ feature }}</li>
+            {% endfor %}
+        </ul>
         {% else %}
-            <p>No features available.</p>
+        <p>No features available.</p>
         {% endif %}
     </div>
 
@@ -124,6 +133,10 @@
     <!-- Back Button -->
     <div class="back-btn">
         <a href="/create">Create Another Character</a>
+    </div>
+
+    <div class="back-btn">
+        <a href="/">Home</a>
     </div>
 
     <div class="back-btn">

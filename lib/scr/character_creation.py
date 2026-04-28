@@ -1,7 +1,7 @@
 # character_creation.py
 
 from background import Background
-from creation_character.prof.profession_dicts import proffesion
+from profession_dicts import proffesion
 from StatRoller import stats
 from race_dicts import racedict
 from asiapplier import apply_asi

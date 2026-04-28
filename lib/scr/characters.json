@@ -1,0 +1,155 @@
+[
+    {
+        "Name": "Civ",
+        "Class": "fighter",
+        "Level": 1,
+        "Race": "human",
+        "Class Features": [
+            "Fighting Style: You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended. Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
+            "Second Wind: You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your fighter level. You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. When you reach certain Fighter level 4 and 10, you gain an additional use of this feature.",
+            "Weapon Mastery: Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table."
+        ],
+        "Race Description": {
+            "CreatureType": "Humanoid",
+            "Small": "about 2-4 feet tall",
+            "Medium": "about 4-7 feet tall",
+            "Speed": "30 feet",
+            "Resourceful": "Gain Heroic Inspiration on Long Rest.",
+            "Skillful": "One skill proficiency.",
+            "Versatile": "One Origin feat."
+        },
+        "Background": "None",
+        "Stats": {
+            "STR": 10,
+            "DEX": 10,
+            "CON": 10,
+            "INT": 10,
+            "WIS": 10,
+            "CHA": 10
+        }
+    },
+    {
+        "Name": "Victor",
+        "Class": "fighter",
+        "Level": 7,
+        "Race": "human",
+        "Class Features": [
+            "Fighting Style: You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended. Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
+            "Second Wind: You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your fighter level. You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. When you reach certain Fighter level 4 and 10, you gain an additional use of this feature.",
+            "Weapon Mastery: Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table.",
+            "Action Surge: You can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action, except the Magic action. Once you use this feature, you can't do so again until you finish a Short or Long Rest. Starting at level 17, you can use it twice before a rest but only once on a turn.",
+            "Tactical Mind: You have a mind for tactics on and off the battlefield. When you fail an ability check, you can expend a use of your Second Wind to push yourself toward success. Rather than regaining Hit Points, you roll 1d10 and add the number rolled to the ability check, potentially turning it into a success. If the check still fails, this use of Second Wind isn't expended.",
+            "Subclass: You gain a Fighter subclass of your choice. A subclass is a specialization that grants you features at certain Fighter levels. For the rest of your career, you gain each of your subclass's features that are of your Fighter level or lower.",
+            "Feat: You gain the Ability Score Improvement feat or another feat of your choice for which you qualify.",
+            "Extra Attack: You can attack twice instead of once whenever you take the Attack action on your turn.",
+            "Tactical Shift: Tactical Shift: Whenever you activate your Second Wind with a Bonus Action, you can move up to half your Speed without provoking Opportunity Attacks.",
+            "Feat: You gain the Ability Score Improvement feat or another feat of your choice for which you qualify.",
+            "Subclass Feature: You gain a feature from your Fighter Subclass."
+        ],
+        "Race Description": {
+            "CreatureType": "Humanoid",
+            "Small": "about 2-4 feet tall",
+            "Medium": "about 4-7 feet tall",
+            "Speed": "30 feet",
+            "Resourceful": "Gain Heroic Inspiration on Long Rest.",
+            "Skillful": "One skill proficiency.",
+            "Versatile": "One Origin feat."
+        },
+        "Background": "Soldier",
+        "Stats": {
+            "STR": 10,
+            "DEX": 10,
+            "CON": 10,
+            "INT": 10,
+            "WIS": 10,
+            "CHA": 10
+        }
+    },
+    {
+        "Name": "",
+        "Class": "fighter",
+        "Level": 1,
+        "Race": "human",
+        "Class Features": [
+            "Fighting Style: You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended. Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
+            "Second Wind: You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your fighter level. You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. When you reach certain Fighter level 4 and 10, you gain an additional use of this feature.",
+            "Weapon Mastery: Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table."
+        ],
+        "Race Description": {
+            "CreatureType": "Humanoid",
+            "Small": "about 2-4 feet tall",
+            "Medium": "about 4-7 feet tall",
+            "Speed": "30 feet",
+            "Resourceful": "Gain Heroic Inspiration on Long Rest.",
+            "Skillful": "One skill proficiency.",
+            "Versatile": "One Origin feat."
+        },
+        "Background": "None",
+        "Stats": {
+            "STR": 10,
+            "DEX": 10,
+            "CON": 10,
+            "INT": 10,
+            "WIS": 10,
+            "CHA": 10
+        }
+    },
+    {
+        "Name": "",
+        "Class": "fighter",
+        "Level": 1,
+        "Race": "human",
+        "Class Features": [
+            "Fighting Style: You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended. Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
+            "Second Wind: You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your fighter level. You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. When you reach certain Fighter level 4 and 10, you gain an additional use of this feature.",
+            "Weapon Mastery: Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table."
+        ],
+        "Race Description": {
+            "CreatureType": "Humanoid",
+            "Small": "about 2-4 feet tall",
+            "Medium": "about 4-7 feet tall",
+            "Speed": "30 feet",
+            "Resourceful": "Gain Heroic Inspiration on Long Rest.",
+            "Skillful": "One skill proficiency.",
+            "Versatile": "One Origin feat."
+        },
+        "Background": "None",
+        "Stats": {
+            "STR": 10,
+            "DEX": 10,
+            "CON": 10,
+            "INT": 10,
+            "WIS": 10,
+            "CHA": 10
+        }
+    },
+    {
+        "Name": "",
+        "Class": "fighter",
+        "Level": 1,
+        "Race": "human",
+        "Class Features": [
+            "Fighting Style: You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended. Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
+            "Second Wind: You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your fighter level. You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. When you reach certain Fighter level 4 and 10, you gain an additional use of this feature.",
+            "Weapon Mastery: Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table."
+        ],
+        "Race Description": {
+            "CreatureType": "Humanoid",
+            "Small": "about 2-4 feet tall",
+            "Medium": "about 4-7 feet tall",
+            "Speed": "30 feet",
+            "Resourceful": "Gain Heroic Inspiration on Long Rest.",
+            "Skillful": "One skill proficiency.",
+            "Versatile": "One Origin feat."
+        },
+        "Background": "None",
+        "Stats": {
+            "STR": 10,
+            "DEX": 10,
+            "CON": 10,
+            "INT": 10,
+            "WIS": 10,
+            "CHA": 10
+        }
+    }
+]
