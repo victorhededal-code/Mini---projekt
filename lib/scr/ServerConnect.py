@@ -11,37 +11,79 @@ def get_conn():
         port=18539,
     )
 
-def sync_characters_to_db(json_path):
-    if not os.path.exists(json_path):
-        print("No JSON file found to sync.")
-        return
+def load_characters(json_path):
+   with open(json_path, "r") as f:
+       data = json.load(f)
 
-    with open(json_path, "r") as f:
-        data = json.load(f)
 
-    conn = get_conn()
-    cur = conn.cursor()
+   conn = get_conn()
+   cur = conn.cursor()
 
-    # Clear the old database table completely
-    cur.execute("TRUNCATE TABLE public.class_info;")
 
-    if isinstance(data, dict):
-        data = [data]
+   # NOTE: your JSON is a single object, not a list
+   if isinstance(data, dict):
+       data = [data]
 
-    for character in data:
-        name = character.get("Name")
-        features = character.get("Class Features", [])
-        features_text = "\n".join(features)
 
-        cur.execute("""
-            INSERT INTO public.class_info (class_name, class_resource)
-            VALUES (%s, %s)
-        """, (name, features_text))
+   for character in data:
+       name = character.get("Name")
+       features = character.get("Class Features", [])
 
-    conn.commit()
-    cur.close()
-    conn.close()
-    print("Database synced and old data replaced successfully.")
+
+       # convert list → string (safe for TEXT column)
+       features_text = "\n".join(features)
+
+
+       cur.execute("""
+           INSERT INTO public.class_info (class_name, class_resource)
+           VALUES (%s, %s)
+       """, (name, features_text))
+
+
+   conn.commit()
+   cur.close()
+   conn.close()
+
+
+   print("Character imported successfully")
+
+
+
+def export_characters(json_path):
+   conn = get_conn()
+   cur = conn.cursor()
+
+
+   cur.execute("""
+       SELECT class_name, class_resource
+       FROM public.class_info
+   """)
+
+
+   rows = cur.fetchall()
+
+
+   data = []
+   for row in rows:
+       name, features_text = row
+
+
+       # convert string back → list
+       features = features_text.split("\n") if features_text else []
+
+
+       character = {
+           "Name": name,
+           "Class Features": features
+       }
+
+
+       data.append(character)
+
+
+   cur.close()
+   conn.close()
+
 
 if __name__ == "__main__":
-    sync_characters_to_db("characters.json")
+    load_characters("characters.json")
