@@ -2,10 +2,127 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>About us</title>
+    <title>About Us - ForgeYourHero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #020617;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #a855f7;
+            margin: 0;
+        }
+
+        nav a {
+            color: #f1f5f9;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #a855f7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #a855f7;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .team {
+            margin-top: 30px;
+        }
+
+        .member {
+            background: #020617;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #94a3b8;
+        }
+    </style>
 </head>
+
 <body>
-    Hej Filip, Hvordan går det. Jeg håber du kan lide vores character creator indtil videre.
+
+<header>
+    <h1>ForgeYourHero</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/characters">Characters</a>
+      <a href="/about_us">About Us</a>
+      <a href="#">Login</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>About Us</h2>
+    <p>
+        Hej Filip, Hvordan går det. Jeg håber du kan lide vores character creator indtil videre.
     Vi har arbejdet hårdt på at få det til at fungere og køre smooth uden bugs eller crashes. Og vi håber du ikke har stødt på nogle indtil videre.
+    </p>
+
+    <h2>Vores mission</h2>
+    <p>
+        At gøre karakteroprettelse til en problemfri oplevelse, så du kan komme hurtigere i gang med dine eventyr.
+    </p>
+
+    <div class="team">
+        <h2>Teamet</h2>
+
+        <div class="member">
+            <h3>Mahatma Gundhi</h3>
+            <p>Frederik.</p>
+        </div>
+
+        <div class="member">
+            <h3>Para</h3>
+            <p>Magnus.</p>
+        </div>
+
+        <div class="member">
+            <h3>Glazeye</h3>
+            <p>Patrick.</p>
+        </div>
+
+        <div class="member">
+            <h3>GamingCookie</h3>
+            <p>Victor.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 ForgeYourHero – All rights reserved</p>
+</footer>
+
 </body>
 </html>

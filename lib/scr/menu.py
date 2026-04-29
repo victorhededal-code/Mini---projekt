@@ -1,7 +1,12 @@
 from lib.scr.character_creation import *
 def menu():
     print("Welcome to the DnD character creator")
-    character_list=log_in()
+    users={}
+    person=log_in()
+    if person in users:
+        character_list=users[person]
+    else:
+        character_list={}
     while True:
         print("Welcome to the DnD character creator")
         ch1 = input("Choose between printing an existing character-sheet or making a new Character-sheet")
