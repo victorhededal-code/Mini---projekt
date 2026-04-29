@@ -6,27 +6,31 @@ def get_conn():
     return psycopg2.connect(
         dbname="defaultdb",
         user="avnadmin",
-        password=os.getenv("AVNS_OS7k6IhujLNj9O7-AeD"),
+        password=os.getenv("PG_PASSWORD"),
         host="pg-4a73aa4-itek-thostrup.i.aivencloud.com",
         port=18539,
     )
 
-def load_characters(json_path):
+def sync_characters_to_db(json_path):
+    if not os.path.exists(json_path):
+        print("No JSON file found to sync.")
+        return
+
     with open(json_path, "r") as f:
         data = json.load(f)
 
     conn = get_conn()
     cur = conn.cursor()
 
-    # NOTE: your JSON is a single object, not a list
+    # Clear the old database table completely
+    cur.execute("TRUNCATE TABLE public.class_info;")
+
     if isinstance(data, dict):
         data = [data]
 
     for character in data:
         name = character.get("Name")
         features = character.get("Class Features", [])
-
-        # convert list → string (safe for TEXT column)
         features_text = "\n".join(features)
 
         cur.execute("""
@@ -37,7 +41,7 @@ def load_characters(json_path):
     conn.commit()
     cur.close()
     conn.close()
+    print("Database synced and old data replaced successfully.")
 
-    print("Character imported successfully")
-load_characters("characters.json")
-load_characters("characters.json")
+if __name__ == "__main__":
+    sync_characters_to_db("characters.json")

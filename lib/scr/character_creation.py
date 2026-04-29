@@ -6,7 +6,15 @@ from StatRoller import stats
 from race_dicts import racedict
 from asiapplier import apply_asi
 from background import backgrounds
+import json
 
+def save_all_characters(character_list, json_path="characters.json"):
+    """
+    Overwrites the json file with the current character list.
+    """
+    with open(json_path, "w") as f:
+        # Use indent for readability
+        json.dump(character_list, f, indent=4)
 
 def create_character(data: dict) -> dict:
     """
