@@ -82,6 +82,12 @@
         }
     </style>
 </head>
+ <div class="empty">
+    <form method="GET">
+        <input type="text" name="id" placeholder="Enter character ID" required>
+        <button class="btn" type="submit">Unlock</button>
+    </form>
+</div>
 <body>
 
 <div class="container">
@@ -93,8 +99,10 @@
     </div>
 
     {% if characters %}
-        <div class="grid">
-            {% for char in characters %}
+           <div class="grid">
+        {% for char in characters %}
+            {% if request.args.get('id') and char.id == request.args.get('id') %}
+
                 <div class="card">
                     <h2>{{ char.Name }}</h2>
 
@@ -111,10 +119,11 @@
                             </div>
                         {% endfor %}
                     </div>
-
                 </div>
-            {% endfor %}
-        </div>
+
+            {% endif %}
+        {% endfor %}
+    </div>
     {% else %}
         <div class="empty">
             <p>No characters saved yet.</p>

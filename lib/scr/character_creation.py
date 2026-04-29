@@ -6,15 +6,11 @@ from StatRoller import stats
 from race_dicts import racedict
 from asiapplier import apply_asi
 from background import backgrounds
-import json
+import hashlib
+import random
+import string
 
-def save_all_characters(character_list, json_path="characters.json"):
-    """
-    Overwrites the json file with the current character list.
-    """
-    with open(json_path, "w") as f:
-        # Use indent for readability
-        json.dump(character_list, f, indent=4)
+
 
 def create_character(data: dict) -> dict:
     """
@@ -77,5 +73,10 @@ def create_character(data: dict) -> dict:
 
     # --- Final Stats ---
     character["Stats"] = character_stats
+    text = name
+    for x in range(random.randint(1, 100)):
+        text += random.choice(string.ascii_letters)
+    sha512_hash = hashlib.sha512(text.encode()).hexdigest()
+    character["id"] = sha512_hash
 
     return character

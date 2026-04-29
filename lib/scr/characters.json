@@ -1,5 +1,6 @@
 [
     {
+        "Name": "Victor",
         "Class": "fighter",
         "Level": 1,
         "Race": "human",
@@ -17,12 +18,165 @@
             "Skillful": "One skill proficiency.",
             "Versatile": "One Origin feat."
         },
+        "Background": "kigger p\u00e5 stjernerne",
         "Stats": {
+            "STR": 10,
             "DEX": 10,
             "CON": 10,
             "INT": 10,
             "WIS": 10,
             "CHA": 10
-        }
+        },
+        "id": "6a8e8d090ecf45c742a1341608888f722529fcfd"
+    },
+    {
+        "Name": "Victor",
+        "Class": "fighter",
+        "Level": 1,
+        "Race": "human",
+        "Class Features": [
+            "Fighting Style: You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended. Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
+            "Second Wind: You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your fighter level. You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. When you reach certain Fighter level 4 and 10, you gain an additional use of this feature.",
+            "Weapon Mastery: Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table."
+        ],
+        "Race Description": {
+            "CreatureType": "Humanoid",
+            "Small": "about 2-4 feet tall",
+            "Medium": "about 4-7 feet tall",
+            "Speed": "30 feet",
+            "Resourceful": "Gain Heroic Inspiration on Long Rest.",
+            "Skillful": "One skill proficiency.",
+            "Versatile": "One Origin feat."
+        },
+        "Background": "hallo! :D",
+        "Stats": {
+            "STR": 10,
+            "DEX": 10,
+            "CON": 10,
+            "INT": 10,
+            "WIS": 10,
+            "CHA": 10
+        },
+        "id": "2244fa1e562f95d47e2f77430a74a40af807385a"
+    },
+    {
+        "Name": "",
+        "Class": "fighter",
+        "Level": 1,
+        "Race": "human",
+        "Class Features": [
+            "Fighting Style: You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended. Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
+            "Second Wind: You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your fighter level. You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. When you reach certain Fighter level 4 and 10, you gain an additional use of this feature.",
+            "Weapon Mastery: Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table."
+        ],
+        "Race Description": {
+            "CreatureType": "Humanoid",
+            "Small": "about 2-4 feet tall",
+            "Medium": "about 4-7 feet tall",
+            "Speed": "30 feet",
+            "Resourceful": "Gain Heroic Inspiration on Long Rest.",
+            "Skillful": "One skill proficiency.",
+            "Versatile": "One Origin feat."
+        },
+        "Background": "None",
+        "Stats": {
+            "STR": 10,
+            "DEX": 10,
+            "CON": 10,
+            "INT": 10,
+            "WIS": 10,
+            "CHA": 10
+        },
+        "id": "605b0231f66ce9b3ccac5b124cacefb975fb038a69df95d94bf6feb2accc6e4bd75553c279b2943d326e6e92af76dad4d14187fea498d3576dabd1f1ab8740a4"
+    },
+    {
+        "Name": "",
+        "Class": "fighter",
+        "Level": 1,
+        "Race": "human",
+        "Class Features": [
+            "Fighting Style: You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended. Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
+            "Second Wind: You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your fighter level. You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. When you reach certain Fighter level 4 and 10, you gain an additional use of this feature.",
+            "Weapon Mastery: Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table."
+        ],
+        "Race Description": {
+            "CreatureType": "Humanoid",
+            "Small": "about 2-4 feet tall",
+            "Medium": "about 4-7 feet tall",
+            "Speed": "30 feet",
+            "Resourceful": "Gain Heroic Inspiration on Long Rest.",
+            "Skillful": "One skill proficiency.",
+            "Versatile": "One Origin feat."
+        },
+        "Background": "None",
+        "Stats": {
+            "STR": 10,
+            "DEX": 10,
+            "CON": 10,
+            "INT": 10,
+            "WIS": 10,
+            "CHA": 10
+        },
+        "id": "16fba07e515040b443fce9d3d1d38286998abf081cfd97fd20a1ac291d858db3c77a7ccc14ee00626bfad5c5d298dda687e54d2bba63097911b194abb421bd0f"
+    },
+    {
+        "Name": "",
+        "Class": "fighter",
+        "Level": 1,
+        "Race": "human",
+        "Class Features": [
+            "Fighting Style: You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended. Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
+            "Second Wind: You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your fighter level. You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. When you reach certain Fighter level 4 and 10, you gain an additional use of this feature.",
+            "Weapon Mastery: Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table."
+        ],
+        "Race Description": {
+            "CreatureType": "Humanoid",
+            "Small": "about 2-4 feet tall",
+            "Medium": "about 4-7 feet tall",
+            "Speed": "30 feet",
+            "Resourceful": "Gain Heroic Inspiration on Long Rest.",
+            "Skillful": "One skill proficiency.",
+            "Versatile": "One Origin feat."
+        },
+        "Background": "None",
+        "Stats": {
+            "STR": 10,
+            "DEX": 10,
+            "CON": 10,
+            "INT": 10,
+            "WIS": 10,
+            "CHA": 10
+        },
+        "id": "09d79c3750be768ecdb760490f90585d60f2bfc5d9559a1a731a162fedb39128d8099c4c420481fd07c4ffad4647463c012d9c007c49c0fc3271e32e852b4110"
+    },
+    {
+        "Name": "yooo",
+        "Class": "fighter",
+        "Level": 1,
+        "Race": "human",
+        "Class Features": [
+            "Fighting Style: You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended. Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.",
+            "Second Wind: You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your fighter level. You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. When you reach certain Fighter level 4 and 10, you gain an additional use of this feature.",
+            "Weapon Mastery: Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices. When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table."
+        ],
+        "Race Description": {
+            "CreatureType": "Humanoid",
+            "Small": "about 2-4 feet tall",
+            "Medium": "about 4-7 feet tall",
+            "Speed": "30 feet",
+            "Resourceful": "Gain Heroic Inspiration on Long Rest.",
+            "Skillful": "One skill proficiency.",
+            "Versatile": "One Origin feat."
+        },
+        "Background": "None",
+        "Stats": {
+            "STR": 10,
+            "DEX": 10,
+            "CON": 10,
+            "INT": 10,
+            "WIS": 10,
+            "CHA": 10
+        },
+        "id": "f6d2a6b203e8ecd61048b71907fa6b859c0b5f2cb9f7310bf9c5e9ea042222e824f891019ae11521d88682abd312b71a77f3500e3e8ef1db34104231d4a4c617"
     }
 ]
