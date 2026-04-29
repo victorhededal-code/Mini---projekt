@@ -7,6 +7,8 @@ from race_dicts import racedict
 from asiapplier import apply_asi
 from background import backgrounds
 import hashlib
+import random
+import string
 
 
 
@@ -71,7 +73,10 @@ def create_character(data: dict) -> dict:
 
     # --- Final Stats ---
     character["Stats"] = character_stats
-    sha1_hash = hashlib.sha1(name.encode()).hexdigest()
+    text = name
+    for x in range(random.randint(1, 100)):
+        text += random.choice(string.ascii_letters)
+    sha1_hash = hashlib.sha1(text.encode()).hexdigest()
     character["id"] = sha1_hash
 
     return character
