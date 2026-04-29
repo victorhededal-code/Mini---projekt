@@ -37,7 +37,7 @@ def create():
 
         character = create_character(data)
 
-
+        
 
         file_path = "characters.json"
 
@@ -79,7 +79,7 @@ def characters():
 
 @app.route("/save")
 def save():
-    "gem noget lort."
+    pass
 
 
 app.run(debug=True)

@@ -6,6 +6,8 @@ from StatRoller import stats
 from race_dicts import racedict
 from asiapplier import apply_asi
 from background import backgrounds
+import hashlib
+
 
 
 def create_character(data: dict) -> dict:
@@ -69,5 +71,7 @@ def create_character(data: dict) -> dict:
 
     # --- Final Stats ---
     character["Stats"] = character_stats
+    sha1_hash = hashlib.sha1(name.encode()).hexdigest()
+    character["id"] = sha1_hash
 
     return character
