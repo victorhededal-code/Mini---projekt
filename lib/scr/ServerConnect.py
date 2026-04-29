@@ -40,3 +40,4 @@ def load_characters(json_path):
 
     print("Character imported successfully")
 load_characters("characters.json")
+load_characters("characters.json")
