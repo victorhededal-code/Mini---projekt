@@ -2,88 +2,71 @@ import json
 import psycopg2
 import os
 
+
 def get_conn():
     return psycopg2.connect(
         dbname="defaultdb",
         user="avnadmin",
-        password=os.getenv("PG_PASSWORD"),
+        password="AVNS_OS7k6IhujLNj9O7-AeD",
         host="pg-4a73aa4-itek-thostrup.i.aivencloud.com",
         port=18539,
     )
 
+
 def load_characters(json_path):
-   with open(json_path, "r") as f:
-       data = json.load(f)
+    with open(json_path, "r") as f:
+        data = json.load(f)
 
+    # Ensure consistent structure
+    if isinstance(data, dict):
+        data = [data]
+    elif not isinstance(data, list):
+        raise ValueError("Invalid JSON format: expected dict or list")
 
-   conn = get_conn()
-   cur = conn.cursor()
+    conn = get_conn()
 
+    with conn:
+        with conn.cursor() as cur:
+            cur.executemany(
+                """
+                INSERT INTO public.class_info2 (class_name, class_resource)
+                VALUES (%s, %s)
+                """,
+                [
+                    (character.get("Name"), "TEST")
+                    for character in data
+                ],
+            )
 
-   # NOTE: your JSON is a single object, not a list
-   if isinstance(data, dict):
-       data = [data]
-
-
-   for character in data:
-       name = character.get("Name")
-       features = character.get("Class Features", [])
-
-
-       # convert list → string (safe for TEXT column)
-       features_text = "\n".join(features)
-
-
-       cur.execute("""
-           INSERT INTO public.class_info (class_name, class_resource)
-           VALUES (%s, %s)
-       """, (name, features_text))
-
-
-   conn.commit()
-   cur.close()
-   conn.close()
-
-
-   print("Character imported successfully")
-
+    print("Character imported successfully")
 
 
 def export_characters(json_path):
-   conn = get_conn()
-   cur = conn.cursor()
+    conn = get_conn()
+
+    with conn:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT class_name, class_resource
+                FROM public.class_info
+            """)
+
+            rows = cur.fetchall()
+
+    data = []
+
+    for name, features_text in rows:
+        character = {
+            "Name": name,
+            "Class Features": features_text.split("\n") if features_text else []
+        }
+        data.append(character)
+
+    with open(json_path, "w") as f:
+        json.dump(data, f, indent=4)
+
+    print("Characters exported successfully")
 
 
-   cur.execute("""
-       SELECT class_name, class_resource
-       FROM public.class_info
-   """)
-
-
-   rows = cur.fetchall()
-
-
-   data = []
-   for row in rows:
-       name, features_text = row
-
-
-       # convert string back → list
-       features = features_text.split("\n") if features_text else []
-
-
-       character = {
-           "Name": name,
-           "Class Features": features
-       }
-
-
-       data.append(character)
-
-
-   cur.close()
-   conn.close()
-
-
-if __name__ == "__main__":
-    load_characters("characters.json")
+# Run import
+load_characters("characters.json")
