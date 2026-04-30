@@ -14,7 +14,7 @@ def get_conn():
 
 
 def load_characters(json_path):
-    # Load JSON
+    # Load JSOl
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
