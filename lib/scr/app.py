@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from character_creation import create_character
+from lib.scr.ServerConnect import load_characters
 from profession_dicts import proffesion
 from race_dicts import racedict
 import json
@@ -47,7 +48,7 @@ def characters():
     if os.path.exists(file_path):
         with open(file_path, "r") as f:
             try:
-                characters = json.load(f)
+                characters = load_characters
             except:
                 characters = []
     else:
