@@ -80,6 +80,22 @@
         .btn:hover {
             background: #9333ea;
         }
+        .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 6fr);
+    gap: 8px;
+    margin-top: 50px;
+            margin-left: -350px;
+            margin-right: -350px;
+}
+
+.feature-item {
+    background: #020617;
+    padding: 6px;
+    border-radius: 6px;
+    text-align: left;
+            font-size: 1rem;
+}
     </style>
 </head>
  <div class="empty">
@@ -118,6 +134,27 @@
                                 {{ stat }}<br>{{ val }}
                             </div>
                         {% endfor %}
+                        <h2>Class Features</h2>
+                    <div class="feature-grid">
+                        {% set class_key = char.Class|lower %}
+
+                        {% if class_key in proffesion %}
+
+                            {% for lvl in range(1, char.Level|int + 1) %}
+                                {% set features = proffesion[char.Class|lower].get(lvl, {}) %}
+
+                                {% for key, value in features.items() %}
+                                    <div class="feature-item">
+                                        <strong>{{ key }}:</strong>
+                                        <span>{{ value }}</span>
+                                    </div>
+                                {% endfor %}
+
+                            {% endfor %}
+
+                        {% else %}
+                            <p>No features available.</p>
+                        {% endif %}
                     </div>
                 </div>
 
