@@ -37,7 +37,8 @@ def load_characters(json_path):
                     con,
                     intelligence,
                     wis,
-                    cha
+                    cha,
+                    pc_code
                 )
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """,
@@ -54,6 +55,7 @@ def load_characters(json_path):
                         c.get("Stats", {}).get("INT"),
                         c.get("Stats", {}).get("WIS"),
                         c.get("Stats", {}).get("CHA"),
+                        c.get("id"),
                     )
                     for c in data
                 ],
