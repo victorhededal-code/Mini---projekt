@@ -38,7 +38,6 @@
             background: #020617;
             border-radius: 10px;
             overflow-wrap: anywhere;
-            word-break: break-word;
         }
 
         .grid {
@@ -77,14 +76,15 @@
         }
     </style>
 </head>
+
 <body>
 
 <div class="container">
 
-    <!-- Character Name -->
+    <!-- NAME -->
     <h1>{{ character.Name }}</h1>
 
-    <!-- Basic Info -->
+    <!-- BASIC INFO -->
     <div class="section">
         <p><strong>Class:</strong> {{ character.Class|capitalize }}</p>
         <p><strong>Level:</strong> {{ character.Level }}</p>
@@ -92,7 +92,7 @@
         <p><strong>Background:</strong> {{ character.Background }}</p>
     </div>
 
-    <!-- Stats -->
+    <!-- STATS -->
     <h2>Stats</h2>
     <div class="section grid">
         {% for stat, value in character.Stats.items() %}
@@ -103,7 +103,7 @@
         {% endfor %}
     </div>
 
-    <!-- Class Features -->
+    <!-- CLASS FEATURES -->
     <h2>Class Features</h2>
     <div class="section">
         {% if character["Class Features"] %}
@@ -113,22 +113,31 @@
             {% endfor %}
         </ul>
         {% else %}
-        <p>No features available.</p>
+        <p>No class features available.</p>
         {% endif %}
     </div>
 
-    <!-- Race Description -->
-    <h2>Race Info</h2>
+    <!-- RACE FEATURES -->
+    <h2>Race Features</h2>
     <div class="section">
-        <p>{{ character["Race Description"] }}</p>
-    </div>
-    <!-- character id -->
-    <h2>Character id</h2>
-    <div class="section">
-        <p>{{ character["id"] }}</p>
+        {% if character["Race Description"] %}
+        <ul>
+            {% for feature in character["Race Description"] %}
+            <li>{{ feature }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No race features available.</p>
+        {% endif %}
     </div>
 
-    <!-- Back Button -->
+    <!-- CHARACTER ID -->
+    <h2>Character ID</h2>
+    <div class="section">
+        <p>{{ character.id }}</p>
+    </div>
+
+    <!-- BUTTONS -->
     <div class="back-btn">
         <a href="/create">Create Another Character</a>
     </div>

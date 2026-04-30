@@ -12,17 +12,39 @@ def get_conn():
         port=18539,
     )
 
+def ensure_json_file(path):
+    if not os.path.exists(path):
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump([], f)
+        return
+
+    # If file exists but is empty or broken, fix it
+    with open(path, "r+", encoding="utf-8") as f:
+        content = f.read().strip()
+
+        if not content:
+            f.seek(0)
+            json.dump([], f)
+            f.truncate()
+            return
+
+        try:
+            json.loads(content)  # validate JSON
+        except json.JSONDecodeError:
+            f.seek(0)
+            json.dump([], f)
+            f.truncate()
 
 def load_characters(json_path):
-    # Load JSOl
+
+    ensure_json_file(json_path)
+
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # Ensure list format
     if isinstance(data, dict):
         data = [data]
 
-    # Prepare SQL (11 columns → 11 placeholders)
     sql = """
         INSERT INTO public.class_info2
         (
@@ -42,27 +64,27 @@ def load_characters(json_path):
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
 
-    # Build values correctly (MUST match placeholders exactly)
     values = [
         (
-            character.get("Name"),
-            character.get("Class"),
-            character.get("Level"),
-            character.get("Race"),
-            character.get("Background"),
-            character.get("Stats", {}).get("STR"),
-            character.get("Stats", {}).get("DEX"),
-            character.get("Stats", {}).get("CON"),
-            character.get("Stats", {}).get("INT"),
-            character.get("Stats", {}).get("WIS"),
-            character.get("Stats", {}).get("CHA"),
-            character.get("id"),
+            c.get("Name"),
+            c.get("Class"),
+            c.get("Level"),
+            c.get("Race"),
+            c.get("Background"),
+            c.get("Stats", {}).get("STR"),
+            c.get("Stats", {}).get("DEX"),
+            c.get("Stats", {}).get("CON"),
+            c.get("Stats", {}).get("INT"),
+            c.get("Stats", {}).get("WIS"),
+            c.get("Stats", {}).get("CHA"),
+            c.get("id"),
         )
-        for character in data
+        for c in data
     ]
 
-    # DB connection (safe)
+
     conn = get_conn()
+
     try:
         with conn:
             with conn.cursor() as cur:
@@ -74,7 +96,6 @@ def load_characters(json_path):
         conn.close()
 
 
-
 def export_character(json_path, character_id):
     conn = get_conn()
 
@@ -82,63 +103,25 @@ def export_character(json_path, character_id):
         with conn:
             with conn.cursor() as cur:
                 cur.execute("""
-                    SELECT
-                        pc_name,
-                        class_name,
-                        class_level,
-                        pc_race,
-                        pc_background,
-                        str,
-                        dex,
-                        con,
-                        intelligence,
-                        wis,
-                        cha,
-                        pc_code
+                    SELECT *
                     FROM public.class_info2
-                    WHERE id = %s
+                    WHERE pc_code = %s
                 """, (character_id,))
 
                 row = cur.fetchone()
 
-        if not row:
-            print("Character not found")
-            return
+                if not row:
+                    print("Character not found")
+                    return
 
-        (
-            name,
-            class_name,
-            level,
-            race,
-            background,
-            str_val,
-            dex,
-            con,
-            intelligence,
-            wis,
-            cha,
-            pc_code
-        ) = row
+                # Get column names
+                columns = [desc[0] for desc in cur.description]
 
-        character = {
-            "Name": name or "",
-            "Class": class_name,
-            "Level": level,
-            "Race": race,
-            "Background": background or "None",
-            "Stats": {
-                "STR": str_val,
-                "DEX": dex,
-                "CON": con,
-                "INT": intelligence,
-                "WIS": wis,
-                "CHA": cha
-            },
-            "id": pc_code
-        }
+                # Build dictionary dynamically
+                character = dict(zip(columns, row))
 
-        with open("upload_pc", "w", encoding="utf-8") as f:
-            json.dump([character], f, indent=4)
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(character, f, indent=4, default=str)
 
         print("Character exported successfully")
 
@@ -146,6 +129,7 @@ def export_character(json_path, character_id):
         conn.close()
 
 
-# Run import
-if __name__ == "__main__":
-    load_characters("characters.json")
+export_character(
+    "upload_pc.json",
+    "acd65821ce7f3494c080e3213d36dcf0a989086c"
+)

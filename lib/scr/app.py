@@ -1,10 +1,12 @@
 from flask import Flask, request, render_template
 from character_creation import create_character
-from lib.scr.ServerConnect import load_characters
+from ServerConnect import *
 from profession_dicts import proffesion
 from race_dicts import racedict
 import json
 import os
+
+
 
 app = Flask(__name__)
 
@@ -29,32 +31,105 @@ def create():
                 "INT": int(form.get("int")),
                 "WIS": int(form.get("wis")),
                 "CHA": int(form.get("cha")),
-            }
+            },
+            "id": (form.get("id")),
         }
 
         character = create_character(data)
+
         file_path = "characters.json"
 
+        # write JSON
         with open(file_path, "w") as f:
             json.dump([character], f, indent=4)
+
+
+        load_characters(file_path)
 
         return render_template("result.html", character=character)
 
     return render_template("create_character.html")
 
-@app.route("/characters")
+
+@app.route("/characters", methods=["GET"])
 def characters():
+
+    character_id = request.args.get("id")
+
+    if character_id:
+
+        # Export DB character into JSON file
+        export_character("upload_pc.json", character_id)
+
+        try:
+            with open("upload_pc.json", "r", encoding="utf-8") as f:
+                raw = json.load(f)
+
+            # -----------------------------
+            # RACE FEATURES FIX
+            # -----------------------------
+            race_key = raw.get("pc_race")
+            race_data = racedict.get(race_key, {})
+
+            race_features = []
+            for key, value in race_data.items():
+                race_features.append(f"{key}: {value}")
+
+            # -----------------------------
+            # CLASS FEATURES FIX
+            # -----------------------------
+            class_key = raw.get("class_name")
+            class_features = proffesion.get(class_key, [])
+
+            # -----------------------------
+            # FINAL CHARACTER FORMAT
+            # -----------------------------
+            character = {
+                "Name": raw.get("pc_name"),
+                "Class": class_key,
+                "Level": raw.get("class_level"),
+                "Race": race_key,
+                "Background": raw.get("pc_background"),
+
+                "Stats": {
+                    "STR": raw.get("str"),
+                    "DEX": raw.get("dex"),
+                    "CON": raw.get("con"),
+                    "INT": raw.get("intelligence"),
+                    "WIS": raw.get("wis"),
+                    "CHA": raw.get("cha"),
+                },
+
+                "Class Features": class_features,
+                "Race Description": race_features,
+                "id": raw.get("pc_code")
+            }
+
+        except Exception as e:
+            print("Error loading character:", e)
+            character = None
+
+        return render_template("result.html", character=character)
+
+    # -----------------------------
+    # LIST PAGE (no ID)
+    # -----------------------------
     file_path = "characters.json"
+
     if os.path.exists(file_path):
-        with open(file_path, "r") as f:
-            try:
-                characters = load_characters
-            except:
-                characters = []
+        try:
+            characters = load_characters()
+        except:
+            characters = []
     else:
         characters = []
 
-    return render_template("characters.html", characters=characters, proffesion=proffesion, racedict=racedict)
+    return render_template(
+        "characters.html",
+        characters=characters,
+        proffesion=proffesion,
+        racedict=racedict
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
