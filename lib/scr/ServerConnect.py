@@ -17,55 +17,90 @@ def load_characters(json_path):
     with open(json_path, "r") as f:
         data = json.load(f)
 
-    # Ensure consistent structure
     if isinstance(data, dict):
         data = [data]
-    elif not isinstance(data, list):
-        raise ValueError("Invalid JSON format: expected dict or list")
 
     conn = get_conn()
-
-    with conn:
+    try:
         with conn.cursor() as cur:
             cur.executemany(
                 """
-                INSERT INTO public.class_info2 (class_name, class_resource)
-                VALUES (%s, %s)
+                INSERT INTO public.class_info2
+                (
+                    pc_name,
+                    class_name,
+                    class_level,
+                    pc_race,
+                    pc_background,
+                    str,
+                    dex,
+                    con,
+                    intelligence,
+                    wis,
+                    cha
+                )
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """,
                 [
-                    (character.get("Name"), "TEST")
-                    for character in data
+                    (
+                        c.get("Name"),
+                        c.get("Class"),
+                        c.get("Level"),
+                        c.get("Race"),
+                        c.get("Background"),
+                        c.get("Stats", {}).get("STR"),
+                        c.get("Stats", {}).get("DEX"),
+                        c.get("Stats", {}).get("CON"),
+                        c.get("Stats", {}).get("INT"),
+                        c.get("Stats", {}).get("WIS"),
+                        c.get("Stats", {}).get("CHA"),
+                    )
+                    for c in data
                 ],
             )
+        conn.commit()
+    finally:
+        conn.close()
 
-    print("Character imported successfully")
+    print("Characters imported successfully")
 
 
-def export_characters(json_path):
+
+def export_character(json_path, character_id):
     conn = get_conn()
+    try:
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute("""
+                    SELECT id, class_name, class_resource
+                    FROM public.class_info
+                    WHERE id = %s
+                """, (character_id,))
 
-    with conn:
-        with conn.cursor() as cur:
-            cur.execute("""
-                SELECT class_name, class_resource
-                FROM public.class_info
-            """)
+                row = cur.fetchone()
 
-            rows = cur.fetchall()
+        if not row:
+            print("Character not found")
+            return
 
-    data = []
+        char_id, name, features_text = row
 
-    for name, features_text in rows:
         character = {
+            "id": char_id,
             "Name": name,
-            "Class Features": features_text.split("\n") if features_text else []
+            "Class Features": (
+                features_text.strip().split("\n")
+                if features_text else []
+            )
         }
-        data.append(character)
 
-    with open(json_path, "w") as f:
-        json.dump(data, f, indent=4)
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(character, f, indent=4)
 
-    print("Characters exported successfully")
+        print("Character exported successfully")
+
+    finally:
+        conn.close()
 
 
 # Run import
