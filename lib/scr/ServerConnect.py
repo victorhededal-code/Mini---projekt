@@ -14,57 +14,62 @@ def get_conn():
 
 
 def load_characters(json_path):
-    with open(json_path, "r") as f:
+    # Load JSON
+    with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
+    # Ensure list format
     if isinstance(data, dict):
         data = [data]
 
+    # Prepare SQL (11 columns → 11 placeholders)
+    sql = """
+        INSERT INTO public.class_info2
+        (
+            pc_name,
+            class_name,
+            class_level,
+            pc_race,
+            pc_background,
+            str,
+            dex,
+            con,
+            intelligence,
+            wis,
+            cha
+        )
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """
+
+    # Build values correctly (MUST match placeholders exactly)
+    values = [
+        (
+            character.get("Name"),
+            character.get("Class"),
+            character.get("Level"),
+            character.get("Race"),
+            character.get("Background"),
+            character.get("Stats", {}).get("STR"),
+            character.get("Stats", {}).get("DEX"),
+            character.get("Stats", {}).get("CON"),
+            character.get("Stats", {}).get("INT"),
+            character.get("Stats", {}).get("WIS"),
+            character.get("Stats", {}).get("CHA"),
+        )
+        for character in data
+    ]
+
+    # DB connection (safe)
     conn = get_conn()
     try:
-        with conn.cursor() as cur:
-            cur.executemany(
-                """
-                INSERT INTO public.class_info2
-                (
-                    pc_name,
-                    class_name,
-                    class_level,
-                    pc_race,
-                    pc_background,
-                    str,
-                    dex,
-                    con,
-                    intelligence,
-                    wis,
-                    cha,
-                    pc_code
-                )
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-                """,
-                [
-                    (
-                        c.get("Name"),
-                        c.get("Class"),
-                        c.get("Level"),
-                        c.get("Race"),
-                        c.get("Background"),
-                        c.get("Stats", {}).get("STR"),
-                        c.get("Stats", {}).get("DEX"),
-                        c.get("Stats", {}).get("CON"),
-                        c.get("Stats", {}).get("INT"),
-                        c.get("Stats", {}).get("WIS"),
-                        c.get("Stats", {}).get("CHA"),
-                        c.get("id"),
-                    )
-                    for c in data
-                ],
-            )
-        conn.commit()
+        with conn:
+            with conn.cursor() as cur:
+                cur.executemany(sql, values)
+
+        print("Characters imported successfully")
+
     finally:
         conn.close()
-
-    print("Characters imported successfully")
 
 
 
