@@ -5,9 +5,7 @@ from race_dicts import racedict
 import json
 import os
 
-
 app = Flask(__name__)
-
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -16,11 +14,7 @@ def index():
 @app.route("/create", methods=["GET", "POST"])
 def create():
     if request.method == "POST":
-
-        # Collect form data
         form = request.form
-
-        # Data trukket fra create_character.html
         data = {
             "name": form.get("name"),
             "class": form.get("class"),
@@ -38,27 +32,10 @@ def create():
         }
 
         character = create_character(data)
-
-        
-
         file_path = "characters.json"
 
-        # Load existing characters
-        if os.path.exists(file_path):
-            with open(file_path, "r") as f:
-                try:
-                    characters = json.load(f)
-                except:
-                    characters = []
-        else:
-            characters = []
-
-        # Add new character
-        characters.append(character)
-
-        # Save back
         with open(file_path, "w") as f:
-            json.dump(characters, f, indent=4)
+            json.dump([character], f, indent=4)
 
         return render_template("result.html", character=character)
 
@@ -67,7 +44,6 @@ def create():
 @app.route("/characters")
 def characters():
     file_path = "characters.json"
-
     if os.path.exists(file_path):
         with open(file_path, "r") as f:
             try:
@@ -79,9 +55,5 @@ def characters():
 
     return render_template("characters.html", characters=characters, proffesion=proffesion, racedict=racedict)
 
-@app.route("/save")
-def save():
-    pass
-
-
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
