@@ -77,7 +77,7 @@ def create_character(data: dict) -> dict:
     text = name
     for x in range(random.randint(1, 100)):
         text += random.choice(string.ascii_letters)
-    sha512_hash = hashlib.sha512(text.encode()).hexdigest()
-    character["id"] = sha512_hash
+    sha1_hash = hashlib.sha1(text.encode()).hexdigest()
+    character["id"] = sha1_hash
 
     return character

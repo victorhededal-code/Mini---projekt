@@ -96,6 +96,16 @@
     text-align: left;
             font-size: 1rem;
 }
+.race-grid {
+        display: grid;
+    grid-template-columns: repeat(1, 6fr);
+    gap: 8px;
+}
+.section-break {
+    border-top: 1px solid #a855f7;
+    margin: 25px 0;
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
+}
     </style>
 </head>
  <div class="empty">
@@ -155,6 +165,13 @@
                         {% else %}
                             <p>No features available.</p>
                         {% endif %}
+                        <div class="section-break">
+                        <h2>Race Features</h2>
+                        <div class="race-grid">
+
+                           {% for x in racedict[char.Race] %}
+                                <p><strong>{{ x|capitalize }}:</strong> {{racedict[char.Race][x]}}</p>
+                            {% endfor %}
                     </div>
                 </div>
 
