@@ -73,6 +73,7 @@ def create_character(data: dict) -> dict:
 
     # --- Final Stats ---
     character["Stats"] = character_stats
+    # --- id creation ---
     text = name
     for x in range(random.randint(1, 100)):
         text += random.choice(string.ascii_letters)

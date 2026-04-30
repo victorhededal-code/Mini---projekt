@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from character_creation import create_character
+from profession_dicts import proffesion
 import json
 import os
 
@@ -75,7 +76,7 @@ def characters():
     else:
         characters = []
 
-    return render_template("characters.html", characters=characters)
+    return render_template("characters.html", characters=characters, proffesion=proffesion)
 
 @app.route("/save")
 def save():
