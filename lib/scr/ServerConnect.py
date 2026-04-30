@@ -14,7 +14,7 @@ def get_conn():
 
 
 def load_characters(json_path):
-    # Load JSON
+    # Load JSOl
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -36,9 +36,10 @@ def load_characters(json_path):
             con,
             intelligence,
             wis,
-            cha
+            cha,
+            pc_code
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
 
     # Build values correctly (MUST match placeholders exactly)
@@ -55,6 +56,7 @@ def load_characters(json_path):
             character.get("Stats", {}).get("INT"),
             character.get("Stats", {}).get("WIS"),
             character.get("Stats", {}).get("CHA"),
+            character.get("id"),
         )
         for character in data
     ]
