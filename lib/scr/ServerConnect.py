@@ -147,4 +147,5 @@ def export_character(json_path, character_id):
 
 
 # Run import
-load_characters("characters.json")
+if __name__ == "__main__":
+    load_characters("characters.json")
