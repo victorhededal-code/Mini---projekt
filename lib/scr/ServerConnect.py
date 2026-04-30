@@ -77,12 +77,25 @@ def load_characters(json_path):
 
 def export_character(json_path, character_id):
     conn = get_conn()
+
     try:
         with conn:
             with conn.cursor() as cur:
                 cur.execute("""
-                    SELECT id, class_name, class_resource
-                    FROM public.class_info
+                    SELECT
+                        pc_name,
+                        class_name,
+                        class_level,
+                        pc_race,
+                        pc_background,
+                        str,
+                        dex,
+                        con,
+                        intelligence,
+                        wis,
+                        cha,
+                        pc_code
+                    FROM public.class_info2
                     WHERE id = %s
                 """, (character_id,))
 
@@ -92,19 +105,40 @@ def export_character(json_path, character_id):
             print("Character not found")
             return
 
-        char_id, name, features_text = row
+        (
+            name,
+            class_name,
+            level,
+            race,
+            background,
+            str_val,
+            dex,
+            con,
+            intelligence,
+            wis,
+            cha,
+            pc_code
+        ) = row
 
         character = {
-            "id": char_id,
-            "Name": name,
-            "Class Features": (
-                features_text.strip().split("\n")
-                if features_text else []
-            )
+            "Name": name or "",
+            "Class": class_name,
+            "Level": level,
+            "Race": race,
+            "Background": background or "None",
+            "Stats": {
+                "STR": str_val,
+                "DEX": dex,
+                "CON": con,
+                "INT": intelligence,
+                "WIS": wis,
+                "CHA": cha
+            },
+            "id": pc_code
         }
 
         with open(json_path, "w", encoding="utf-8") as f:
-            json.dump(character, f, indent=4)
+            json.dump([character], f, indent=4)
 
         print("Character exported successfully")
 
