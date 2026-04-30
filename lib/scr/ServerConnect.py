@@ -137,7 +137,7 @@ def export_character(json_path, character_id):
             "id": pc_code
         }
 
-        with open(json_path, "w", encoding="utf-8") as f:
+        with open("upload_pc", "w", encoding="utf-8") as f:
             json.dump([character], f, indent=4)
 
         print("Character exported successfully")
