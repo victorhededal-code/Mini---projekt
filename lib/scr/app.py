@@ -66,7 +66,7 @@ def characters():
                 raw = json.load(f)
 
             # -----------------------------
-            # RACE FEATURES FIX
+            # RACE FEATURES
             # -----------------------------
             race_key = raw.get("pc_race")
             race_data = racedict.get(race_key, {})
@@ -76,10 +76,19 @@ def characters():
                 race_features.append(f"{key}: {value}")
 
             # -----------------------------
-            # CLASS FEATURES FIX
+            # CLASS FEATURES
             # -----------------------------
             class_key = raw.get("class_name")
-            class_features = proffesion.get(class_key, [])
+            class_level = raw.get("class_level")
+
+            class_data = proffesion.get(class_key, {})
+
+            class_features = []
+
+            for level, features in class_data.items():
+                if level <= class_level:
+                    for feature_name, description in features.items():
+                        class_features.append(f"Level {level} - {feature_name}: {description}")
 
             # -----------------------------
             # FINAL CHARACTER FORMAT
