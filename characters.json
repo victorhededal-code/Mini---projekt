@@ -1,6 +1,6 @@
 [
     {
-        "Name": "Magnus",
+        "Name": "Knud",
         "Class": "fighter",
         "Level": 5,
         "Race": "human",
@@ -26,13 +26,13 @@
         },
         "Background": "Soldier",
         "Stats": {
-            "STR": 10,
-            "DEX": 18,
-            "CON": 16,
-            "INT": 12,
-            "WIS": 8,
-            "CHA": 2
+            "STR": 18,
+            "DEX": 13,
+            "CON": 12,
+            "INT": 15,
+            "WIS": 16,
+            "CHA": 17
         },
-        "id": "b2b522473c109ebc714ffc5fdd651aa13df76707"
+        "id": "67782f78b2f5e9dc73490535a796c8cd4ec02fcd"
     }
 ]

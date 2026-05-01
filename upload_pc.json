@@ -1,15 +1,15 @@
 {
-    "class_id": 169,
+    "class_id": 177,
     "class_name": "fighter",
-    "class_level": 3,
+    "class_level": 5,
     "pc_race": "human",
     "pc_background": "Soldier",
-    "str": 16,
-    "dex": 16,
-    "con": 16,
-    "intelligence": 16,
+    "str": 18,
+    "dex": 13,
+    "con": 12,
+    "intelligence": 15,
     "wis": 16,
-    "cha": 16,
-    "pc_name": "Magnus",
-    "pc_code": "bcafe9258b74d7f7133a8a4e3f181c7772a3d926"
+    "cha": 17,
+    "pc_name": "Knud",
+    "pc_code": "67782f78b2f5e9dc73490535a796c8cd4ec02fcd"
 }
