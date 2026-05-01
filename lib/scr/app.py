@@ -50,6 +50,9 @@ def create():
 
     return render_template("create_character.html")
 
+@app.route("/about_us", methods=["GET"])
+def about_us():
+    return render_template("about_us.html")
 
 @app.route("/characters", methods=["GET"])
 def characters():
