@@ -128,8 +128,8 @@ def export_character(json_path, character_id):
     finally:
         conn.close()
 
-
-export_character(
-    "upload_pc.json",
-    "acd65821ce7f3494c080e3213d36dcf0a989086c"
-)
+if __name__ == "__main__":
+    export_character(
+        "upload_pc.json",
+        "acd65821ce7f3494c080e3213d36dcf0a989086c"
+    )
